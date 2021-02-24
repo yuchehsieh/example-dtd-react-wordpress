@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 
@@ -14,9 +15,9 @@ const Home = () => {
           <div className={styles.post}>
             <p>標題 1</p>
           </div>
-          <div className={styles.post}>
+          <Link className={styles.post} to={`/announcements/12345`}>
             <p>標題 2</p>
-          </div>
+          </Link>
         </div>
       </div>
     </Fragment>
