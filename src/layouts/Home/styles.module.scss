@@ -1,0 +1,40 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.03);
+  padding-top: 5vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.postWrapper {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.post {
+  width: 100%;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 3vh;
+  }
+
+  &:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+}
