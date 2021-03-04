@@ -36,9 +36,7 @@ const Announcement = () => {
       <Header />
       <div className={styles.container}>
         <h1>{post?.title?.rendered}</h1>
-        <div
-          dangerouslySetInnerHTML={{ __html: post?.content?.rendered }}
-        ></div>
+        <div dangerouslySetInnerHTML={{ __html: post?.content?.rendered }} />
       </div>
     </Fragment>
   );

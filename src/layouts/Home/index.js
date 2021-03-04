@@ -14,9 +14,10 @@ const Home = () => {
   }, []);
 
   const fetchPosts = async () => {
-    let response = await axios.get(
-      'https://dtd.ntue.edu.tw/wp-json/wp/v2/posts?per_page=5',
-    );
+    let url =
+      'https://dtd.ntue.edu.tw/wp-json/wp/v2/posts?categories=31&_fields=id, title, category&per_page=5';
+    // let url = 'https://dtd.ntue.edu.tw/wp-json/dtd/v1/announcements';
+    let response = await axios.get(url);
     let data = response.data;
     setPosts(data);
   };
