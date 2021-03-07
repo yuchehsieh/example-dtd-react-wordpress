@@ -27,14 +27,16 @@ const Home = () => {
       <Header />
       <div className="px-10 py-10 pt-5 xl:px-64">
         <h2 className="text-xl">系務公告</h2>
-        <div className="flex-col mt-5 space-y-5">
+        <div className="flex-col mt-5 space-y-dtd-spacing">
           {posts.map((post) => (
             <Link
-              className="px-5 py-7 bg-white flex rounded-xl transition duration-150 shadow-lg hover:shadow-xl"
+              className="px-dtd-padding py-7 bg-white flex rounded-xl transition duration-150 shadow-lg hover:shadow-xl"
               to={`/announcements/${post?.id}`}
               key={post?.id}
             >
-              <p>{post?.title?.rendered}</p>
+              <p className="text-dtd-general-text-color hover:text-dtd-primary duration-150">
+                {post?.title?.rendered}
+              </p>
             </Link>
           ))}
         </div>
