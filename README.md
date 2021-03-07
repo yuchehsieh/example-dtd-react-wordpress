@@ -1,6 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) + Eslint + stylelint + Prettier
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) + 
+
+[Eslint + stylelint + Prettier](https://tokileecy.medium.com/%E7%AD%86%E8%A8%98-react-%E5%B0%88%E6%A1%88%E9%85%8D%E7%BD%AE-eslint-stylelint-prettier-8867a7ed6fde) 
+
+[TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
 
 ## Before clone this project:（下載專案前請看！）
 

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Header from '../../components/Header';
 
-import styles from './styles.module.scss';
+// import styles from './styles.module.scss';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -25,12 +25,12 @@ const Home = () => {
   return (
     <Fragment>
       <Header />
-      <div className={styles.container}>
-        <h2>系務公告</h2>
-        <div className={styles.postWrapper}>
+      <div className="px-10 py-10 pt-5 xl:px-64">
+        <h2 className="text-xl">系務公告</h2>
+        <div className="flex-col mt-5 space-y-5">
           {posts.map((post) => (
             <Link
-              className={styles.post}
+              className="px-5 py-7 bg-white flex rounded-xl transition duration-150 shadow-lg hover:shadow-xl"
               to={`/announcements/${post?.id}`}
               key={post?.id}
             >
@@ -42,5 +42,25 @@ const Home = () => {
     </Fragment>
   );
 };
+
+// return (
+//   <Fragment>
+//     <Header />
+//     <div className={styles.container}>
+//       <h2>系務公告</h2>
+//       <div className={styles.postWrapper}>
+//         {posts.map((post) => (
+//           <Link
+//             className={styles.post}
+//             to={`/announcements/${post?.id}`}
+//             key={post?.id}
+//           >
+//             <p>{post?.title?.rendered}</p>
+//           </Link>
+//         ))}
+//       </div>
+//     </div>
+//   </Fragment>
+// );
 
 export default Home;
