@@ -34,7 +34,7 @@ const Home = () => {
               to={`/announcements/${post?.id}`}
               key={post?.id}
             >
-              <p>{post?.title?.rendered}12</p>
+              <p>{post?.title?.rendered}123</p>
               <sub>{DateFormatter(post?.date)}</sub>
             </Link>
           ))}
