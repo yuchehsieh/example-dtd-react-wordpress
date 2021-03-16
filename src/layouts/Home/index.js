@@ -32,7 +32,7 @@ const Home = () => {
         <div className={styles.posts__wrapper}>
           {posts.map((post) => (
             <Link
-              className={`flex-column align-items-start ${styles.posts_post}`}
+              className={styles.posts_post}
               to={`/announcements/${post?.id}`}
               key={post?.id}
             >
@@ -46,6 +46,12 @@ const Home = () => {
                   height: '50px',
                 }}
               />
+              <div className="d-flex flex-row">
+                <div className={styles.posts_postButton}>Click me!</div>
+                <div className={styles.posts_postButton__warning}>
+                  Danger to Click!
+                </div>
+              </div>
             </Link>
           ))}
         </div>

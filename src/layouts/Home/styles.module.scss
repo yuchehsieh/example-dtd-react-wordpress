@@ -45,3 +45,26 @@
     color: $dtd-main-color;
   }
 }
+
+.posts_postButton,
+.posts_postButton__warning {
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 1rem;
+}
+
+.posts_postButton__warning {
+  background: palevioletred;
+}
+
+// .posts_postButton {
+//   padding: 1rem;
+//   border: 1px solid;
+//   border-radius: 1rem;
+//   background: $dtd-main-color;
+//   color: $dtd-background;
+
+//   &.__warnning {
+//     background: palevioletred;
+//   }
+// }
