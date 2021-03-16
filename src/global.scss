@@ -5,6 +5,8 @@
 // @import '~tailwindcss/components';
 // @import '~tailwindcss/utilities';
 @import '~bootstrap/scss/bootstrap';
+@import './styles/media.scss';
+@import './styles/color.scss';
 
 *,
 *::after,
@@ -86,4 +88,10 @@ h6,
 p {
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: $dtd-media-desktop) {
+  * {
+    $dtd-main-color: black;
+  }
 }

@@ -6,6 +6,8 @@ import Header from '../../components/Header';
 
 import styles from './styles.module.scss';
 
+import IMG from '../../assets/images/login_bg.png';
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
@@ -30,12 +32,20 @@ const Home = () => {
         <div className={styles.posts__wrapper}>
           {posts.map((post) => (
             <Link
-              className={`${styles.posts_post} flex-column align-items-start `}
+              className={`flex-column align-items-start ${styles.posts_post}`}
               to={`/announcements/${post?.id}`}
               key={post?.id}
             >
               <p>{post?.title?.rendered}1234</p>
               <sub>{DateFormatter(post?.date)}</sub>
+              <div
+                style={{
+                  background: `url(${IMG})`,
+                  backgroundSize: 'contain',
+                  width: '50px',
+                  height: '50px',
+                }}
+              />
             </Link>
           ))}
         </div>

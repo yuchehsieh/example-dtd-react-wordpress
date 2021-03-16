@@ -1,4 +1,7 @@
 @import '../../styles/color.scss';
+@import '../../styles//media.scss';
+
+// __wrapper 外包覆
 
 .container {
   height: 100vh;
@@ -21,6 +24,7 @@
   width: 100%;
   padding: 3vh 2vw;
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   background-color: white;
