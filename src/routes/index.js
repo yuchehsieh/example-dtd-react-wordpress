@@ -4,18 +4,24 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from '../layouts/Home';
 import SingleAnnouncementPage from '../layouts/Announcement';
 
+import path from '../utils/path';
+
+import { StoreProvider } from '../store';
+
 const Routes = () => {
   return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path="/announcements/:id"
-          component={SingleAnnouncementPage}
-        />
-        <Route exact path="/" component={HomePage} />
-      </Switch>
-    </Router>
+    <StoreProvider>
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path={`${path.announcements}/:id`}
+            component={SingleAnnouncementPage}
+          />
+          <Route exact path={path.home} component={HomePage} />
+        </Switch>
+      </Router>
+    </StoreProvider>
   );
 };
 

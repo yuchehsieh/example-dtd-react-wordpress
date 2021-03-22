@@ -1,0 +1,1 @@
+export const GET_ANNOUNCEMENTS = 'GET_ANNOUNCEMNET';

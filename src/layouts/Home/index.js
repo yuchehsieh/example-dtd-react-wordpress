@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../components/Header';
-
 import styles from './styles.module.scss';
 
 import IMG from '../../assets/images/login_bg.png';
 
+import path from '../../utils/path';
+
+// import StoreContext from '../../store/index';
+
 const Home = () => {
+  // const { state, dispatch } = useContext(StoreContext);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const Home = () => {
           {posts.map((post) => (
             <Link
               className={styles.posts_post}
-              to={`/announcements/${post?.id}`}
+              to={`${path.announcements}/${post?.id}`}
               key={post?.id}
             >
               <p>{post?.title?.rendered}1234</p>
