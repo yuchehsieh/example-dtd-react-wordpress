@@ -1,17 +1,23 @@
 import { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import { GET_ANNOUNCEMENTS } from '../utils/constants';
-
 export const StoreContext = createContext();
-
 const initialState = {
   announcements: [],
 };
 
+// action type
+import { SET_ANNOUNCEMENTS } from '../utils/constants';
+
+// action creators
+export function setAnnouncements(payload) {
+  return { type: SET_ANNOUNCEMENTS, payload };
+}
+
+// reducer
 function reducer(state, action) {
   switch (action.type) {
-    case GET_ANNOUNCEMENTS:
+    case SET_ANNOUNCEMENTS:
       return {
         ...state,
         announcements: action.payload,

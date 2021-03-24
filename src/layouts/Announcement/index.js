@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
 import styles from './styles.module.scss';
 import Header from '../../components/Header';
@@ -14,29 +13,30 @@ import '@wordpress/block-library/build-style/theme.css';
 // registerCoreBlocks();
 
 import './overridden.scss';
+import { getAnnouncementById } from '../../api/announcement';
 
 const Announcement = () => {
   const { id } = useParams();
 
-  const [post, setPost] = useState({});
+  const [announcement, setAnnouncement] = useState({});
 
   useEffect(() => {
-    fetchPosts();
+    fetchAnnouncemnt();
   }, []);
 
-  const fetchPosts = async () => {
-    let url = `https://dtd.ntue.edu.tw/wp-json/wp/v2/posts/${id}`;
-    let response = await axios.get(url);
-    let data = response.data;
-    setPost(data);
+  const fetchAnnouncemnt = async () => {
+    let announcement = await getAnnouncementById(id);
+    setAnnouncement(announcement);
   };
 
   return (
     <Fragment>
       <Header />
       <div className={styles.container}>
-        <h1>{post?.title?.rendered}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post?.content?.rendered }} />
+        <h1>{announcement?.title?.rendered}</h1>
+        <div
+          dangerouslySetInnerHTML={{ __html: announcement?.content?.rendered }}
+        />
       </div>
     </Fragment>
   );

@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import Header from '../../components/Header';
 import styles from './styles.module.scss';
@@ -9,24 +8,22 @@ import IMG from '../../assets/images/login_bg.png';
 
 import path from '../../utils/path';
 
-// import StoreContext from '../../store/index';
+import { StoreContext, setAnnouncements } from '../../store/index';
+import { getAnnouncements } from '../../api/announcement';
 
 const Home = () => {
-  // const { state, dispatch } = useContext(StoreContext);
-  const [posts, setPosts] = useState([]);
+  const { state, dispatch } = useContext(StoreContext);
+  // const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchPosts();
+    fetchAllAnnouncments();
   }, []);
 
-  const fetchPosts = async () => {
-    let url =
-      'https://dtd.ntue.edu.tw/wp-json/wp/v2/posts?categories=31&_fields=id, title, category, date&per_page=5';
-    // let url = 'https://dtd.ntue.edu.tw/wp-json/dtd/v1/announcements';
-    let response = await axios.get(url);
-    let data = response.data;
-    setPosts(data);
+  const fetchAllAnnouncments = async () => {
+    dispatch(setAnnouncements(await getAnnouncements()));
   };
+
+  console.log(state);
 
   return (
     <Fragment>
@@ -34,7 +31,7 @@ const Home = () => {
       <div className={styles.container}>
         <h2>系務公告</h2>
         <div className={styles.posts__wrapper}>
-          {posts.map((post) => (
+          {state.announcements.map((post) => (
             <Link
               className={styles.posts_post}
               to={`${path.announcements}/${post?.id}`}
