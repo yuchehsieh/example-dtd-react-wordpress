@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
 import styles from './styles.module.scss';
@@ -13,29 +13,27 @@ import '@wordpress/block-library/build-style/theme.css';
 // registerCoreBlocks();
 
 import './overridden.scss';
-import { getAnnouncementById } from '../../api/announcement';
+
+import { StoreContext } from '../../store/reducer';
+import { getAnnouncementDetail } from '../../store/actions';
 
 const Announcement = () => {
   const { id } = useParams();
-
-  const [announcement, setAnnouncement] = useState({});
+  const { state, dispatch } = useContext(StoreContext);
 
   useEffect(() => {
-    fetchAnnouncemnt();
+    getAnnouncementDetail(dispatch, { id });
   }, []);
-
-  const fetchAnnouncemnt = async () => {
-    let announcement = await getAnnouncementById(id);
-    setAnnouncement(announcement);
-  };
 
   return (
     <Fragment>
       <Header />
       <div className={styles.container}>
-        <h1>{announcement?.title?.rendered}</h1>
+        <h1>{state.announcementDetail?.title?.rendered}</h1>
         <div
-          dangerouslySetInnerHTML={{ __html: announcement?.content?.rendered }}
+          dangerouslySetInnerHTML={{
+            __html: state.announcementDetail?.content?.rendered,
+          }}
         />
       </div>
     </Fragment>

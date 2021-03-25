@@ -6,7 +6,7 @@ import SingleAnnouncementPage from '../layouts/Announcement';
 
 import path from '../utils/path';
 
-import { StoreProvider } from '../store';
+import { StoreProvider } from '../store/reducer';
 
 const Routes = () => {
   return (

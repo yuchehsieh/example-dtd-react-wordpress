@@ -8,22 +8,15 @@ import IMG from '../../assets/images/login_bg.png';
 
 import path from '../../utils/path';
 
-import { StoreContext, setAnnouncements } from '../../store/index';
-import { getAnnouncements } from '../../api/announcement';
+import { StoreContext } from '../../store/reducer';
+import { getAnnouncements } from '../../store/actions';
 
 const Home = () => {
   const { state, dispatch } = useContext(StoreContext);
-  // const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchAllAnnouncments();
+    getAnnouncements(dispatch, { perPage: 6, page: 1 });
   }, []);
-
-  const fetchAllAnnouncments = async () => {
-    dispatch(setAnnouncements(await getAnnouncements()));
-  };
-
-  console.log(state);
 
   return (
     <Fragment>
