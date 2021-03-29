@@ -4,8 +4,7 @@ import { SET_ANNOUNCEMENTS, SET_ANNOUNCEMENT_DETAIL } from './actionTypes';
 const BASE_URL = 'https://dtd.ntue.edu.tw/wp-json/wp/v2';
 
 export const getAnnouncements = async (dispatch, options) => {
-  const perPage = options.perPage || 5;
-  const page = options.page || 1;
+  const { perPage = 5, page = 1 } = options;
 
   const url = `${BASE_URL}/posts?categories=31&_fields=id, title, category, date&per_page=${perPage}&page=${page}`;
   const response = await axios.get(url);
@@ -18,7 +17,7 @@ export const getAnnouncements = async (dispatch, options) => {
 };
 
 export const getAnnouncementDetail = async (dispatch, options) => {
-  const id = options.id;
+  const { id } = options;
   if (!id) {
     throw new Error('No id.');
   }

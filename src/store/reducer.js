@@ -1,5 +1,6 @@
-import { createContext, useReducer } from 'react';
+import { createContext } from 'react';
 import PropTypes from 'prop-types';
+import useReducerWithThunk from 'use-reducer-thunk';
 
 import { SET_ANNOUNCEMENTS, SET_ANNOUNCEMENT_DETAIL } from './actionTypes';
 
@@ -28,7 +29,11 @@ function reducer(state, action) {
 }
 
 export function StoreProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducerWithThunk(
+    reducer,
+    initialState,
+    'dtd-reducer',
+  );
   const value = { state, dispatch };
 
   return (

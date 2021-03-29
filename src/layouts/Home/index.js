@@ -15,7 +15,7 @@ const Home = () => {
   const { state, dispatch } = useContext(StoreContext);
 
   useEffect(() => {
-    getAnnouncements(dispatch, { perPage: 6, page: 1 });
+    getAnnouncements(dispatch, {});
   }, []);
 
   return (

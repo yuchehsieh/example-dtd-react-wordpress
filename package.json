@@ -23,6 +23,7 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-prettier": "^1.1.2",
+    "use-reducer-thunk": "^1.0.8",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
