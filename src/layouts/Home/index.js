@@ -10,12 +10,22 @@ import path from '../../utils/path';
 
 import { StoreContext } from '../../store/reducer';
 import { getAnnouncements } from '../../store/actions';
+import {
+  UIStoreContext,
+  SET_LOADING,
+  SET_LOADING_DONE,
+} from '../../uiStore/reducer';
 
 const Home = () => {
   const { state, dispatch } = useContext(StoreContext);
+  const { uiState, uiDispatch } = useContext(UIStoreContext);
 
   useEffect(() => {
     getAnnouncements(dispatch, {});
+    uiDispatch({ type: SET_LOADING });
+    setTimeout(() => {
+      uiDispatch({ type: SET_LOADING_DONE });
+    }, 3000);
   }, []);
 
   return (
@@ -23,6 +33,7 @@ const Home = () => {
       <Header />
       <div className={styles.container}>
         <h2>系務公告</h2>
+        {uiState.isLoading && <p>loading</p>}
         <div className={styles.posts__wrapper}>
           {state.announcements.map((post) => (
             <Link

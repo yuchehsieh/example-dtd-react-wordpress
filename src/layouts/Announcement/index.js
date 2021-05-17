@@ -17,12 +17,26 @@ import './overridden.scss';
 import { StoreContext } from '../../store/reducer';
 import { getAnnouncementDetail } from '../../store/actions';
 
+import {
+  UIStoreContext,
+  SET_LOADING,
+  SET_LOADING_DONE,
+} from '../../uiStore/reducer';
+
+// 移除掉所有標籤
+// let pureText = myString.replace(/<[^>]*>?/gm, '').replace(/\n/g, '');
+
 const Announcement = () => {
   const { id } = useParams();
   const { state, dispatch } = useContext(StoreContext);
+  const { uiDispatch } = useContext(UIStoreContext);
 
   useEffect(() => {
+    uiDispatch({ type: SET_LOADING });
     getAnnouncementDetail(dispatch, { id });
+    setTimeout(() => {
+      uiDispatch({ type: SET_LOADING_DONE });
+    }, 3000);
   }, []);
 
   return (

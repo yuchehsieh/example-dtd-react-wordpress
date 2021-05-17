@@ -7,21 +7,24 @@ import SingleAnnouncementPage from '../layouts/Announcement';
 import path from '../utils/path';
 
 import { StoreProvider } from '../store/reducer';
+import { UIStoreProvider } from '../uiStore/reducer';
 
 const Routes = () => {
   return (
-    <StoreProvider>
-      <Router>
-        <Switch>
-          <Route
-            exact
-            path={`${path.announcements}/:id`}
-            component={SingleAnnouncementPage}
-          />
-          <Route exact path={path.home} component={HomePage} />
-        </Switch>
-      </Router>
-    </StoreProvider>
+    <UIStoreProvider>
+      <StoreProvider>
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path={`${path.announcements}/:id`}
+              component={SingleAnnouncementPage}
+            />
+            <Route exact path={path.home} component={HomePage} />
+          </Switch>
+        </Router>
+      </StoreProvider>
+    </UIStoreProvider>
   );
 };
 
