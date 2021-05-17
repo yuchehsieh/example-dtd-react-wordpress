@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import styles from './styles.module.scss';
@@ -19,6 +19,7 @@ import {
 const Home = () => {
   const { state, dispatch } = useContext(StoreContext);
   const { uiState, uiDispatch } = useContext(UIStoreContext);
+  const history = useHistory();
 
   useEffect(() => {
     getAnnouncements(dispatch, {});
@@ -28,6 +29,14 @@ const Home = () => {
     }, 3000);
   }, []);
 
+  const onPostClick = (id) => {
+    history.push(`${path.announcements}/${id}`);
+  };
+
+  const onTestButtonClick = () => {
+    history.push(`${path.announcements}/test`);
+  };
+
   return (
     <Fragment>
       <Header />
@@ -36,12 +45,14 @@ const Home = () => {
         {uiState.isLoading && <p>loading</p>}
         <div className={styles.posts__wrapper}>
           {state.announcements.map((post) => (
-            <Link
+            <div
               className={styles.posts_post}
-              to={`${path.announcements}/${post?.id}`}
+              // to={`${path.announcements}/${post?.id}`}
               key={post?.id}
             >
-              <p>{post?.title?.rendered}1234</p>
+              <p onClick={() => onPostClick(post?.id)}>
+                {post?.title?.rendered}1234
+              </p>
               <sub>{DateFormatter(post?.date)}</sub>
               <div
                 style={{
@@ -52,12 +63,23 @@ const Home = () => {
                 }}
               />
               <div className="d-flex flex-row">
-                <div className={styles.posts_postButton}>Click me!</div>
+                <div
+                  className={styles.posts_postButton}
+                  onClick={() => onPostClick(post?.id)}
+                >
+                  Click me!
+                </div>
                 <div className={styles.posts_postButton__warning}>
                   Danger to Click!
                 </div>
+                <div
+                  className={styles.posts_postButton__testing}
+                  onClick={onTestButtonClick}
+                >
+                  連結本地 Docker 文章測試
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

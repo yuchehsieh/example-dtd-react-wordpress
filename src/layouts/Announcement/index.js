@@ -15,7 +15,10 @@ import '@wordpress/block-library/build-style/theme.css';
 import './overridden.scss';
 
 import { StoreContext } from '../../store/reducer';
-import { getAnnouncementDetail } from '../../store/actions';
+import {
+  getTestAnnouncementDetail,
+  getAnnouncementDetail,
+} from '../../store/actions';
 
 import {
   UIStoreContext,
@@ -37,6 +40,11 @@ const Announcement = () => {
     setTimeout(() => {
       uiDispatch({ type: SET_LOADING_DONE });
     }, 3000);
+    if (id === 'test') {
+      getTestAnnouncementDetail(dispatch);
+    } else {
+      getAnnouncementDetail(dispatch, { id });
+    }
   }, []);
 
   return (

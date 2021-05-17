@@ -32,4 +32,15 @@ export const getAnnouncementDetail = async (dispatch, options) => {
   });
 };
 
+export const getTestAnnouncementDetail = async (dispatch) => {
+  const url = `http://localhost:8080/index.php?rest_route=/wp/v2/posts/1`;
+  const response = await axios.get(url);
+  const announcementDetail = response.data;
+
+  dispatch({
+    type: SET_ANNOUNCEMENT_DETAIL,
+    payload: announcementDetail,
+  });
+};
+
 // let url = 'https://dtd.ntue.edu.tw/wp-json/dtd/v1/announcements';

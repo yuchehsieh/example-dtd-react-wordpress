@@ -47,7 +47,8 @@
 }
 
 .posts_postButton,
-.posts_postButton__warning {
+.posts_postButton__warning,
+.posts_postButton__testing {
   padding: 1rem;
   border: 1px solid;
   border-radius: 1rem;
@@ -55,6 +56,11 @@
 
 .posts_postButton__warning {
   background: palevioletred;
+}
+
+.posts_postButton__testing {
+  background-color: aquamarine;
+  z-index: 100;
 }
 
 // .posts_postButton {
